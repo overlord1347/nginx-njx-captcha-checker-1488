@@ -39,12 +39,11 @@
     </div>
 
     <script>
-        function onRecaptchaSuccess() {
-            // Просто ставим куку на 1 час без проверки на беке
+        function onRecaptchaSuccess(token) {
+            // сохраняем токен в куку
             const expires = new Date(Date.now() + 3600000).toUTCString();
-            document.cookie = `captcha_ok=1; expires=${expires}; path=/`;
+            document.cookie = `captcha_token=${token}; expires=${expires}; path=/`;
 
-            // Редирект на главную
             window.location.href = '/';
         }
     </script>
